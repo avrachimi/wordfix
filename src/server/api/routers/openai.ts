@@ -19,8 +19,8 @@ export const openAiRouter = createTRPCRouter({
       })
     )
     .query(async ({ input }) => {
-      const getDecorationText = (text: string) => {
-        switch (text) {
+      const getDecorationText = () => {
+        switch (input.decoration) {
           case "minimal":
             return "and decorate it, but with a limit";
           case "maximum":
@@ -31,9 +31,9 @@ export const openAiRouter = createTRPCRouter({
       };
 
       if (input.query !== "") {
-        const modifiedInput = `I will give you some text and I want you to fix the grammar ${getDecorationText(
-          input.decoration
-        )}. The formality should be ${input.formality}. The text:
+        const modifiedInput = `I will give you some text and I want you to fix the grammar ${getDecorationText()}. The formality should be ${
+          input.formality
+        }. The text:
           ${input.query}`;
 
         const completion = await openai.createChatCompletion({
