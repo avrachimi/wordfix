@@ -98,7 +98,7 @@ const Home: NextPage = () => {
                   onChange={(e) => setInput(e.target.value)}
                   required
                 />
-                <Button type="submit" bg={"blue.500"}>
+                <Button type="submit" variant={"solid"}>
                   Submit
                 </Button>
                 <Box textAlign={"left"}>{getAnswerComponent()}</Box>
